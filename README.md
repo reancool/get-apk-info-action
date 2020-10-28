@@ -9,7 +9,7 @@
 ```yaml
   - name: Get Apk Info
     id: apk
-    uses: JantHsueh/get-apk-version-action@master
+    uses: reancool/get-apk-version-action@master
     with:
      apkPath: app/build/outputs/apk/release/app-release.apk
 ```
@@ -35,7 +35,7 @@ Output Parameter, mainly different compilation and build parameters, resulting i
 | `versionNum`   | versionNum  |
 | `applicationId`   | applicationId |
 | `name`   | application label |
-
+| `buildDate`   | build date |
 
 
 ## License
