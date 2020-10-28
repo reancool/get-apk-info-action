@@ -18,6 +18,8 @@ outputs:
     description: 'apk applicationId'
   name:
     description: 'apk name'
+  buildDate:  
+    description: 'apk build fromat time'
 runs:
   using: 'node12'
   main: 'dist/index.js'
