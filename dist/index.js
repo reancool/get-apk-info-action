@@ -10284,6 +10284,26 @@ function appendElement (hander,node) {
 const core = __webpack_require__(370);
 const AppInfoParser = __webpack_require__(217);
 
+function getDate(){
+  var timezone = 8; 
+  var offset_GMT = new Date().getTimezoneOffset();
+  var nowDate = new Date().getTime(); 
+  var targetDate = new Date(nowDate + offset_GMT * 60 * 1000 + timezone * 60 * 60 * 1000);
+  var date = new Date(targetDate);
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  m = m < 10 ? ('0' + m) : m;
+  var d = date.getDate();
+  d = d < 10 ? ('0' + d) : d;
+  var h = date.getHours();
+  h = h < 10 ? ('0' + h) : h;
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  minute = minute < 10 ? ('0' + minute) : minute;
+  second = second < 10 ? ('0' + second) : second;
+  // return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+  return y + '_' + m + '_' + d+'_'+h+'-'+minute+'-'+second;
+}
 async function main() {
     try {
         // inputs from action
@@ -10298,6 +10318,9 @@ async function main() {
             core.setOutput("versionNum", result.versionName);
             core.setOutput("applicationId", result.package);
             core.setOutput("name", result.application.label);
+            var date=getDate();
+            core.setOutput("buildDate",  date);
+            console.log('app build date ----> ', date);
             console.log('app info ----> ', result);
 
         }).catch(err => {
